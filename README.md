@@ -1,24 +1,10 @@
 # cnode-community
 
-## Project setup
-```
-npm install
-```
+## 项目简介
+仿[CNode社区](https://cnodejs.org/)，使用Vue + TypeScript等相关技术栈实现社区部分功能。
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## 技术栈
+- Vue
+- SCSS
+- TypeScript
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
