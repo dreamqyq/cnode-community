@@ -1,0 +1,10 @@
+@mixin flexCenter{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin contentWidth{
+  max-width: 1400px;
+  min-width: 960px;
+}
