@@ -5,6 +5,7 @@
 
 ## 技术栈
 - Vue
-- SCSS
 - TypeScript
+- tsx
+- SCSS
 

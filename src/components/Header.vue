@@ -61,7 +61,7 @@ export default class Header extends Vue {
 .header {
   background: rgb(60, 60, 60);
   @include flexCenter;
-
+  min-width: 960px;
   .wrap {
     @include contentWidth;
     padding: 10px 0;
