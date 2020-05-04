@@ -1,7 +1,7 @@
 /**
  * topicList 请求参数
  */
-export interface topicListParams {
+export declare interface TopicListParams {
   page: number;
   tag?: string;
   limit: number;
@@ -11,22 +11,22 @@ export interface topicListParams {
 /**
  * 导航栏
  */
-export interface NavItem {
+export declare interface NavItem {
   txt: string;
   url: string;
 }
 
-export enum TabEnum {
-  share = "分享",
-  ask = "问答",
-  job = "招聘",
-  good = "精华"
+export declare enum TabEnum {
+  share = "share",
+  ask = "ask",
+  job = "job",
+  good = "good"
 }
 
 /**
  * 页面展示文章列表类型
  */
-export interface topicListItem {
+export declare interface TopicListItem {
   avatarUrl: string;
   replyCount: number;
   visitCount: number;
@@ -37,7 +37,7 @@ export interface topicListItem {
   tab: TabEnum;
 }
 
-export interface Author {
+export declare interface Author {
   loginname: string;
   avatar_url: string;
 }
@@ -45,7 +45,7 @@ export interface Author {
 /**
  * 首页文章列表response
  */
-export interface topicListEntity {
+export declare interface TopicListEntity {
   id: string;
   author_id: string;
   tab: TabEnum;

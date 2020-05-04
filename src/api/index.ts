@@ -1,9 +1,9 @@
 import request from "@/utils/request";
-import { topicListEntity, topicListParams } from "@/type";
+import { TopicListEntity, TopicListParams } from "@/type";
 
 export function getTopicLists(
-  params?: topicListParams
-): Promise<Array<topicListEntity>> {
+  params?: TopicListParams
+): Promise<Array<TopicListEntity>> {
   return request.get("topics", {
     params
   });

@@ -1,12 +1,13 @@
 <script lang="tsx">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import { formatDate } from "@/utils/utils";
-import { topicListItem } from "@/type";
+import { Component, Mixins, Prop } from "vue-property-decorator";
+import { formatDate, formatTabName } from "@/utils/utils";
+import { TopicListItem } from "@/type";
+import Loading from "@/mixins/Loading";
 
 @Component
-export default class PostListItem extends Vue {
+export default class PostListItem extends Mixins(Loading) {
   @Prop(Object)
-  public readonly topicDetail!: topicListItem;
+  public readonly topicDetail!: TopicListItem;
 
   protected render() {
     return (
@@ -14,23 +15,17 @@ export default class PostListItem extends Vue {
         <img src={this.topicDetail.avatarUrl} alt="avatar" />
         <div class="center">
           <span class="count">
-            <span>{this.topicDetail.replyCount}</span> /{" "}
+            <span>{this.topicDetail.replyCount}</span> /
             <span>{this.topicDetail.visitCount}</span>
           </span>
-          <span class="tab">{this.topicDetail.tab}</span>
+          <span class={["tab", { top: this.topicDetail.top }]}>
+            {formatTabName(this.topicDetail)}
+          </span>
           <span class="title">{this.topicDetail.title}</span>
         </div>
         <span class="time">{formatDate(this.topicDetail.lastReplyAt)}</span>
       </div>
     );
-  }
-
-  public mounted() {
-    this.initData();
-  }
-
-  public initData() {
-    console.log(1);
   }
 }
 </script>
@@ -73,9 +68,15 @@ export default class PostListItem extends Vue {
     span.tab {
       display: inline-block;
       margin: 0 5px;
-      width: 50px;
+      font-size: 14px;
+      width: 40px;
       text-align: center;
       background: #eee;
+      border-radius: 5px;
+      &.top {
+        background: #80bd01;
+        color: #fff;
+      }
     }
   }
 }

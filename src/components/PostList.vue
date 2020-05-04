@@ -1,15 +1,16 @@
 <script lang="tsx">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Mixins } from "vue-property-decorator";
 import { getTopicLists } from "@/api";
-import { NavItem, topicListItem } from "@/type";
+import { NavItem, TopicListItem } from "@/type";
 import PostListItem from "@/components/PostListItem.vue";
+import Loading from "@/mixins/Loading";
 
 @Component({
   components: {
     PostListItem
   }
 })
-export default class PostList extends Vue {
+export default class PostList extends Mixins(Loading) {
   protected render() {
     return (
       <div class="post-list-wrap">
@@ -25,23 +26,18 @@ export default class PostList extends Vue {
           </ul>
         </nav>
         <div class="post-list">
-          {this.isLoading ? (
-            <img src={this.imgLoading} alt="loading" />
-          ) : (
-            <ul class="lists">
-              {this.topicLists.map(item => {
-                return <post-list-item topicDetail={item} />;
-              })}
-            </ul>
-          )}
+          <img src={this.imgLoading} alt="loading" v-show={this.isLoading} />
+          <ul class="lists" v-show={!this.isLoading}>
+            {this.topicLists.map(item => {
+              return <post-list-item topicDetail={item} />;
+            })}
+          </ul>
         </div>
       </div>
     );
   }
 
-  private isLoading = false;
-  private imgLoading = require("@/assets/loading.gif");
-  private topicLists: Array<topicListItem> = new Array<topicListItem>();
+  private topicLists: Array<TopicListItem> = new Array<TopicListItem>();
   private tabLists: Array<NavItem> = [
     {
       txt: "全部",
@@ -101,11 +97,15 @@ export default class PostList extends Vue {
   .tips-nav {
     @include widthLimit;
     justify-content: flex-start;
-    border: 1px solid;
     ul {
       display: flex;
       flex-direction: row;
-      color: #80bd01;
+      li {
+        margin: 0 5px;
+        a {
+          color: #80bd01;
+        }
+      }
     }
   }
   .post-list {
