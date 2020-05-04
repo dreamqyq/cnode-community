@@ -1,17 +1,19 @@
 <template>
   <div class="home">
-    <Header></Header>
+    <Header />
+    <PostList></PostList>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
 import Header from "@/components/Header";
+import PostList from "@/components/PostList";
 
 export default {
   name: "Home",
   components: {
-    Header
+    Header,
+    PostList
   }
 };
 </script>

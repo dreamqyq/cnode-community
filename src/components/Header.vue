@@ -1,9 +1,7 @@
 <script lang="tsx">
 import { Component, Vue } from "vue-property-decorator";
-export interface NavItem {
-  txt: string;
-  url: string;
-}
+import { NavItem } from "@/type";
+
 @Component
 export default class Header extends Vue {
   protected render() {
@@ -28,8 +26,8 @@ export default class Header extends Vue {
       </nav>
     );
   }
-  public imgLogo = require("@/assets/logo.svg");
-  public navList: NavItem[] = [
+  private imgLogo = require("@/assets/logo.svg");
+  private navList: Array<NavItem> = [
     {
       txt: "首页",
       url: "/"
@@ -67,8 +65,6 @@ export default class Header extends Vue {
   .wrap {
     @include contentWidth;
     padding: 10px 0;
-    display: flex;
-    flex: 1;
     justify-content: space-between;
     img {
       height: 30px;
