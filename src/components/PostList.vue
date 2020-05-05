@@ -34,7 +34,7 @@ export default class PostList extends Mixins(LoadingMixin) {
         <div class="post-list">
           <loading
             ref="loading"
-            onChangeLoadingStaus={this.changeLoadingStatus}
+            onChangeLoadingStatus={this.changeLoadingStatus}
           />
           <ul class="lists" v-show={!this.isLoading}>
             {this.topicLists.map(item => {

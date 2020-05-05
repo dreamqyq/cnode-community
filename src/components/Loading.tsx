@@ -1,4 +1,4 @@
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Emit, Vue } from "vue-property-decorator";
 
 @Component
 export default class Loading extends Vue {
@@ -10,12 +10,16 @@ export default class Loading extends Vue {
   }
 
   public showLoading() {
-    this.isLoading = true;
-    this.$emit("changeLoadingStatus", this.isLoading);
+    this.changeLoadingStatus(true);
   }
 
   public closeLoading() {
-    this.isLoading = false;
-    this.$emit("changeLoadingStatus", this.isLoading);
+    this.changeLoadingStatus(false);
+  }
+
+  @Emit("changeLoadingStatus")
+  changeLoadingStatus(isLoading: boolean) {
+    this.isLoading = isLoading;
+    return isLoading;
   }
 }
