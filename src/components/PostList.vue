@@ -3,14 +3,20 @@ import { Component, Mixins } from "vue-property-decorator";
 import { getTopicLists } from "@/api";
 import { NavItem, TopicListItem } from "@/type";
 import PostListItem from "@/components/PostListItem.vue";
-import Loading from "@/mixins/Loading";
+import Loading from "@/components/Loading";
+import LoadingMixin from "@/mixins/LoadingMixin";
 
 @Component({
   components: {
+    Loading,
     PostListItem
   }
 })
-export default class PostList extends Mixins(Loading) {
+export default class PostList extends Mixins(LoadingMixin) {
+  $refs!: {
+    loading: Loading;
+  };
+
   protected render() {
     return (
       <div class="post-list-wrap">
@@ -26,7 +32,10 @@ export default class PostList extends Mixins(Loading) {
           </ul>
         </nav>
         <div class="post-list">
-          <img src={this.imgLoading} alt="loading" v-show={this.isLoading} />
+          <loading
+            ref="loading"
+            onChangeLoadingStaus={this.changeLoadingStatus}
+          />
           <ul class="lists" v-show={!this.isLoading}>
             {this.topicLists.map(item => {
               return <post-list-item topicDetail={item} />;
@@ -66,7 +75,7 @@ export default class PostList extends Mixins(Loading) {
   }
 
   public async initData() {
-    this.isLoading = true;
+    this.$refs.loading.showLoading();
     await getTopicLists({
       limit: 40,
       page: 1
@@ -83,31 +92,37 @@ export default class PostList extends Mixins(Loading) {
           visitCount: item.visit_count
         });
       });
-      this.isLoading = false;
+      this.$refs.loading.closeLoading();
     });
   }
 }
 </script>
 <style lang="scss" scoped>
 @import "~@/style";
+
 .post-list-wrap {
   @include flexCenter;
   flex-direction: column;
   margin: 20px 0;
+
   .tips-nav {
     @include widthLimit;
     justify-content: flex-start;
+
     ul {
       display: flex;
       flex-direction: row;
+
       li {
         margin: 0 5px;
+
         a {
           color: #80bd01;
         }
       }
     }
   }
+
   .post-list {
     @include contentWidth;
     justify-content: center;

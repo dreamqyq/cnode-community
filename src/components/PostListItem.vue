@@ -1,11 +1,10 @@
 <script lang="tsx">
-import { Component, Mixins, Prop } from "vue-property-decorator";
+import { Component, Prop, Vue } from "vue-property-decorator";
 import { formatDate, formatTabName } from "@/utils/utils";
 import { TopicListItem } from "@/type";
-import Loading from "@/mixins/Loading";
 
 @Component
-export default class PostListItem extends Mixins(Loading) {
+export default class PostListItem extends Vue {
   @Prop(Object)
   public readonly topicDetail!: TopicListItem;
 
