@@ -1,6 +1,6 @@
 <script lang="tsx">
 import { Component, Vue } from "vue-property-decorator";
-import { NavItem } from "@/type";
+import { NavItem } from "@/types/type";
 
 @Component
 export default class Header extends Vue {

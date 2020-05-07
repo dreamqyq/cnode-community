@@ -1,4 +1,4 @@
-import { TopicListItem } from "@/type";
+import { TopicListItem } from "@/types/type";
 
 export function formatTabName(topic: TopicListItem): string {
   switch (true) {

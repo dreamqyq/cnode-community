@@ -1,7 +1,7 @@
 <script lang="tsx">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { formatDate, formatTabName } from "@/utils/utils";
-import { TopicListItem } from "@/type";
+import { TopicListItem } from "@/types/type";
 
 @Component
 export default class PostListItem extends Vue {

@@ -1,7 +1,7 @@
 <script lang="tsx">
 import { Component, Mixins } from "vue-property-decorator";
 import { getTopicLists } from "@/api";
-import { NavItem, TopicListItem } from "@/type";
+import { NavItem, TopicListItem } from "@/types/type";
 import PostListItem from "@/components/PostListItem.vue";
 import Loading from "@/components/Loading";
 import LoadingMixin from "@/mixins/LoadingMixin";
