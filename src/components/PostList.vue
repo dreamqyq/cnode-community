@@ -82,6 +82,7 @@ export default class PostList extends Mixins(LoadingMixin) {
     }).then(response => {
       response.map(item => {
         this.topicLists.push({
+          id: item.id,
           avatarUrl: item.author.avatar_url,
           good: item.good,
           lastReplyAt: item["last_reply_at"],

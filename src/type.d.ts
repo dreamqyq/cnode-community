@@ -27,6 +27,7 @@ export declare enum TabEnum {
  * 页面展示文章列表类型
  */
 export declare interface TopicListItem {
+  id: string,
   avatarUrl: string;
   replyCount: number;
   visitCount: number;

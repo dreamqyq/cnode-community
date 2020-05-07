@@ -1,14 +1,24 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
-import Home from "../views/Home.vue";
+import Article from "@/components/Article.vue";
+import PostList from "@/components/PostList.vue";
 
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   {
     path: "/",
-    name: "Home",
-    component: Home
+    name: "Index",
+    components: {
+      main: PostList
+    }
+  },
+  {
+    path: "/topic/:id",
+    name: "Article",
+    components: {
+      main: Article
+    }
   }
 ];
 
