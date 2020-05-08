@@ -1,6 +1,6 @@
 <script lang="tsx">
 import { Component, Mixins } from "vue-property-decorator";
-import Loading from "@/components/Loading";
+import Loading from "@/components/Loading.vue";
 import LoadingMixin from "@/mixins/LoadingMixin";
 import { getTopicDetail } from "@/api";
 import { TopicDetailEntity } from "@/types/responseEntity";
@@ -17,14 +17,21 @@ export default class Article extends Mixins(LoadingMixin) {
   protected render() {
     return (
       <div class="article-wrap">
-        <loading
-          ref="loading"
-          onChangeLoadingStatus={this.changeLoadingStatus}
-        />
+        <loading ref="loading" />
         <article
           v-show={!this.isLoading}
-          domPropsInnerHTML={this.topicDetail.content}
-        ></article>
+          onChangeLoadingStatus={this.changeLoadingStatus}
+        >
+          <header>
+            <h1>{this.topicDetail.title}</h1>
+          </header>
+          <main
+            domPropsInnerHTML={this.topicDetail.content}
+            class="markdown-body"
+          >
+            loading💤💤
+          </main>
+        </article>
       </div>
     );
   }
@@ -45,6 +52,12 @@ export default class Article extends Mixins(LoadingMixin) {
 }
 </script>
 
-<style>
-@import url("~@/style/markdown-github.css");
+<style lang="scss" scoped>
+article {
+  header {
+    h1 {
+      text-align: center;
+    }
+  }
+}
 </style>

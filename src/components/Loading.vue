@@ -1,3 +1,4 @@
+<script lang="tsx">
 import { Component, Emit, Vue } from "vue-property-decorator";
 
 @Component
@@ -6,7 +7,11 @@ export default class Loading extends Vue {
   public imgLoading = require("@/assets/loading.gif");
 
   protected render() {
-    return <img src={this.imgLoading} alt="loading" v-show={this.isLoading} />;
+    return (
+      <div class="mask" v-show={this.isLoading}>
+        <img src={this.imgLoading} alt="loading" />
+      </div>
+    );
   }
 
   public showLoading() {
@@ -23,3 +28,12 @@ export default class Loading extends Vue {
     return isLoading;
   }
 }
+</script>
+<style lang="scss" scoped>
+@import "~@/style";
+.mask {
+  @include flexCenter;
+  height: 80vh;
+  width: 100vw;
+}
+</style>

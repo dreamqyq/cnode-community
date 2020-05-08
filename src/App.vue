@@ -11,8 +11,8 @@ export default class App extends Vue {
       <div id="app">
         <Header />
         <main>
-          <router-view name="main"></router-view>
-          <router-view name="slideBar"></router-view>
+          <router-view name="main" />
+          <router-view name="slideBar" />
         </main>
       </div>
     );
@@ -25,10 +25,22 @@ export default class App extends Vue {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 }
 a {
   text-decoration: none;
+}
+.markdown-body {
+  box-sizing: border-box;
+  min-width: 200px;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 45px;
+}
+
+@media (max-width: 767px) {
+  .markdown-body {
+    padding: 15px;
+  }
 }
 </style>

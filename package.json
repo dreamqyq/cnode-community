@@ -30,6 +30,7 @@
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-vue": "^6.2.2",
+    "github-markdown-css": "^4.0.0",
     "prettier": "^1.19.1",
     "reset.css": "^2.0.2",
     "sass": "^1.26.3",
