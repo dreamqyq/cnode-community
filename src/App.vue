@@ -1,9 +1,10 @@
 <script lang="tsx">
 import { Component, Vue } from "vue-property-decorator";
 import Header from "@/components/Header.vue";
+import Footer from "@/components/Footer.vue";
 
 @Component({
-  components: { Header }
+  components: { Header, Footer }
 })
 export default class App extends Vue {
   protected render() {
@@ -14,6 +15,7 @@ export default class App extends Vue {
           <router-view name="main" />
           <router-view name="slideBar" />
         </main>
+        <Footer />
       </div>
     );
   }
@@ -26,6 +28,16 @@ export default class App extends Vue {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+  background: #e1e1e1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  text-align: center;
+  main {
+    display: flex;
+    flex: 1;
+    overflow: auto;
+  }
 }
 a {
   text-decoration: none;

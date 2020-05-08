@@ -102,20 +102,25 @@ export default class PostList extends Mixins(LoadingMixin) {
 @import "~@/style";
 
 .post-list-wrap {
-  @include flexCenter;
+  @include widthLimit;
   flex-direction: column;
-  margin: 20px 0;
+  margin: 15px auto;
+  background: #fff;
+  overflow: auto;
+  flex: 1;
+  border-radius: 8px;
 
   .tips-nav {
-    @include widthLimit;
-    justify-content: flex-start;
+    background: #eee;
+    padding: 10px 5px;
+    border-radius: 8px 8px 0 0;
 
     ul {
       display: flex;
       flex-direction: row;
 
       li {
-        margin: 0 5px;
+        margin: 0 15px;
 
         a {
           color: #80bd01;
