@@ -6,9 +6,6 @@ const service = axios.create({
   timeout: 3 * 60 * 1000
 });
 
-service.defaults.withCredentials =
-  process.env.NODE_ENV.trim() !== "development";
-
 service.interceptors.request.use(
   config => {
     if (config.method === "POST") {

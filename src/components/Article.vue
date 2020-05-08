@@ -17,6 +17,10 @@ export default class Article extends Mixins(LoadingMixin) {
   protected render() {
     return (
       <div class="article-wrap">
+        <loading
+          ref="loading"
+          onChangeLoadingStatus={this.changeLoadingStatus}
+        />
         <article
           v-show={!this.isLoading}
           domPropsInnerHTML={this.topicDetail.content}
@@ -34,9 +38,9 @@ export default class Article extends Mixins(LoadingMixin) {
   }
 
   public async initData() {
-    // this.$refs.loading.showLoading();
+    this.$refs.loading.showLoading();
     this.topicDetail = await getTopicDetail(this.topicId);
-    // this.$refs.loading.closeLoading();
+    this.$refs.loading.closeLoading();
   }
 }
 </script>
