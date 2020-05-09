@@ -1,5 +1,4 @@
 import { Author, TopicDetailEntity } from "@/types/responseEntity";
-import { TabEnum } from "@/types/type";
 
 export function emptyAuthor(): Author {
   return {
@@ -9,7 +8,6 @@ export function emptyAuthor(): Author {
 }
 
 export function emptyTopicDetailEntity(): TopicDetailEntity {
-  const a = TabEnum.share;
   const author = emptyAuthor();
   return {
     author: author,
@@ -22,7 +20,7 @@ export function emptyTopicDetailEntity(): TopicDetailEntity {
     last_reply_at: "",
     replies: [],
     reply_count: 0,
-    tab: a,
+    tab: "share",
     title: "",
     top: false,
     visit_count: 0

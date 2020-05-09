@@ -23,7 +23,7 @@ export declare interface TopicListEntity {
 export declare interface TopicDetailEntity {
   id: string;
   author_id: string;
-  tab: TabEnum;
+  tab: string;
   content: string;
   title: string;
   last_reply_at: string;

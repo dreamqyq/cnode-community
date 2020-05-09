@@ -1,8 +1,8 @@
-import { TabEnum, TopicListItem } from "@/types/type";
+import { TopicListItem } from "@/types/type";
 
 export function formatTabName(
-  topic: TopicListItem | TabEnum,
-  isArticle: boolean = false
+  topic: TopicListItem | string,
+  isArticle = false
 ): string {
   switch (true) {
     case !isArticle && (topic as TopicListItem).top:
@@ -15,13 +15,13 @@ export function formatTabName(
       return "分享";
     case !isArticle && (topic as TopicListItem).tab === "job":
       return "招聘";
-    case isArticle && (topic as TabEnum) === "good":
+    case isArticle && topic === "good":
       return "精华";
-    case isArticle && (topic as TabEnum) === "ask":
+    case isArticle && topic === "ask":
       return "问答";
-    case isArticle && (topic as TabEnum) === "share":
+    case isArticle && topic === "share":
       return "分享";
-    case isArticle && (topic as TabEnum) === "job":
+    case isArticle && topic === "job":
       return "招聘";
     default:
       return "分享";
