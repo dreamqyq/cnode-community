@@ -32,8 +32,7 @@ export default class App extends Vue {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  text-align: center;
-  main {
+  > main {
     display: flex;
     flex: 1;
     overflow: auto;
@@ -45,7 +44,7 @@ a {
 .markdown-body {
   box-sizing: border-box;
   min-width: 200px;
-  max-width: 980px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 45px;
 }

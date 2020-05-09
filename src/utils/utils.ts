@@ -1,19 +1,28 @@
-import { TopicListItem } from "@/types/type";
+import { TabEnum, TopicListItem } from "@/types/type";
 
-export function formatTabName(topic: TopicListItem): string {
+export function formatTabName(
+  topic: TopicListItem | TabEnum,
+  isArticle: boolean = false
+): string {
   switch (true) {
-    case topic.top:
+    case !isArticle && (topic as TopicListItem).top:
       return "置顶";
-    case topic.good:
+    case !isArticle && (topic as TopicListItem).good:
       return "精华";
-    case topic.tab === "ask":
+    case !isArticle && (topic as TopicListItem).tab === "ask":
       return "问答";
-    case topic.tab === "share":
+    case !isArticle && (topic as TopicListItem).tab === "share":
       return "分享";
-    case topic.tab === "job":
+    case !isArticle && (topic as TopicListItem).tab === "job":
       return "招聘";
-    case topic.tab === "good":
+    case isArticle && (topic as TabEnum) === "good":
       return "精华";
+    case isArticle && (topic as TabEnum) === "ask":
+      return "问答";
+    case isArticle && (topic as TabEnum) === "share":
+      return "分享";
+    case isArticle && (topic as TabEnum) === "job":
+      return "招聘";
     default:
       return "分享";
   }

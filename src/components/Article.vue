@@ -5,6 +5,7 @@ import LoadingMixin from "@/mixins/LoadingMixin";
 import { getTopicDetail } from "@/api";
 import { TopicDetailEntity } from "@/types/responseEntity";
 import { emptyTopicDetailEntity } from "@/types/factoryMethods";
+import { formatDate, formatTabName } from "@/utils/utils";
 
 @Component({
   components: { Loading }
@@ -23,7 +24,11 @@ export default class Article extends Mixins(LoadingMixin) {
           onChangeLoadingStatus={this.changeLoadingStatus}
         >
           <header>
-            <h1>{this.topicDetail.title}</h1>
+            <h1>{this.topicDetail.title}</h1>• 发布于
+            {formatDate(this.topicDetail.create_at)} 作者
+            {this.topicDetail.author.loginname}
+            {this.topicDetail.visit_count} 次浏览 来自于{" "}
+            {formatTabName(this.topicDetail.tab, true)}
           </header>
           <main
             domPropsInnerHTML={this.topicDetail.content}
@@ -53,10 +58,24 @@ export default class Article extends Mixins(LoadingMixin) {
 </script>
 
 <style lang="scss" scoped>
-article {
-  header {
-    h1 {
-      text-align: center;
+@import "~@/style";
+.article-wrap {
+  @include widthLimit;
+  flex: 1;
+  margin: 0 auto;
+
+  article {
+    background: #fff;
+    header {
+      padding: 15px 0;
+      border-bottom: 1px solid #ccc;
+      h1 {
+        text-align: left;
+        font-size: 22px;
+        font-weight: bold;
+      }
+    }
+    > main {
     }
   }
 }
