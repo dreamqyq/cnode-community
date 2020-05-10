@@ -18,17 +18,22 @@ export default class Article extends Mixins(LoadingMixin) {
   protected render() {
     return (
       <div class="article-wrap">
-        <loading ref="loading" />
-        <article
-          v-show={!this.isLoading}
+        <loading
+          ref="loading"
           onChangeLoadingStatus={this.changeLoadingStatus}
-        >
+        />
+        <article v-show={!this.isLoading}>
           <header>
-            <h1>{this.topicDetail.title}</h1>• 发布于
-            {formatDate(this.topicDetail.create_at)} 作者
-            {this.topicDetail.author.loginname}
-            {this.topicDetail.visit_count} 次浏览 来自于{" "}
-            {formatTabName(this.topicDetail.tab, true)}
+            <h1>{this.topicDetail.title}</h1>
+            <p>
+              <span>• 发布于 {formatDate(this.topicDetail.create_at)}</span>
+              <span>
+                • 作者
+                {this.topicDetail.author.loginname}
+              </span>
+              <span>{this.topicDetail.visit_count} 次浏览</span>
+              <span>• 来自于 {formatTabName(this.topicDetail.tab, true)}</span>
+            </p>
           </header>
           <main
             domPropsInnerHTML={this.topicDetail.content}
@@ -67,12 +72,19 @@ export default class Article extends Mixins(LoadingMixin) {
   article {
     background: #fff;
     header {
-      padding: 15px 0;
+      padding: 15px;
       border-bottom: 1px solid #ccc;
       h1 {
         text-align: left;
         font-size: 22px;
         font-weight: bold;
+        margin-bottom: 10px;
+      }
+      p > span {
+        font-size: 12px;
+        color: #838383;
+        display: inline-block;
+        margin: 0 5px;
       }
     }
     > main {

@@ -105,8 +105,6 @@ export default class PostList extends Mixins(LoadingMixin) {
   @include widthLimit;
   flex-direction: column;
   margin: 15px auto;
-  background: #fff;
-  overflow: auto;
   flex: 1;
   border-radius: 8px;
 
@@ -132,9 +130,14 @@ export default class PostList extends Mixins(LoadingMixin) {
   .post-list {
     @include contentWidth;
     justify-content: center;
+    background: #fff;
+    margin-bottom: 15px;
 
     ul.lists {
       width: 100%;
+      div.topicItem:last-child {
+        margin-bottom: 0;
+      }
     }
   }
 }
