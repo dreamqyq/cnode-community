@@ -1,4 +1,8 @@
-import { Author, TopicDetailEntity } from "@/types/responseEntity";
+import {
+  Author,
+  TopicDetailEntity,
+  UserInfoEntity
+} from "@/types/responseEntity";
 
 export function emptyAuthor(): Author {
   return {
@@ -24,5 +28,17 @@ export function emptyTopicDetailEntity(): TopicDetailEntity {
     title: "",
     top: false,
     visit_count: 0
+  };
+}
+
+export function emptyUserInfo(): UserInfoEntity {
+  return {
+    avatar_url: "",
+    create_at: "",
+    githubUsername: "",
+    loginname: "",
+    recent_replies: [],
+    recent_topics: [],
+    score: 0
   };
 }

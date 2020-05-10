@@ -15,7 +15,13 @@ export default class ReplyItem extends Vue {
         class={["reply-item", this.reply.ups.length > 0 ? "good-reply" : ""]}
         id={this.reply.id}
       >
-        <router-link to={this.reply.id} class="avatar-link">
+        <router-link
+          to={{
+            name: "UserInfo",
+            params: { loginName: this.reply.author.loginname }
+          }}
+          class="avatar-link"
+        >
           <img
             class="avatar"
             src={this.reply.author.avatar_url}

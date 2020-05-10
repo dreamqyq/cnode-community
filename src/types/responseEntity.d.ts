@@ -46,3 +46,20 @@ export declare interface Reply {
   reply_id?: string;
   is_uped: boolean;
 }
+
+export declare interface RecentTopic {
+  id: string;
+  author: Author;
+  title: string;
+  last_reply_at: string;
+}
+
+export declare interface UserInfoEntity {
+  loginname: string;
+  avatar_url: string;
+  githubUsername: string;
+  create_at: string;
+  score: number;
+  recent_topics: RecentTopic[];
+  recent_replies: RecentTopic[];
+}

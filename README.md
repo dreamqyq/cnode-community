@@ -10,7 +10,7 @@ yarn serve
 ```
 
 ## 技术栈
-- Vue
+- Vue @2.6.11
 - TypeScript
 - TSX
 - SCSS

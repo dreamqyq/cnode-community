@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 import Article from "@/components/Article.vue";
 import PostList from "@/components/PostList.vue";
+import UserInfo from "@/components/UserInfo.vue";
 
 Vue.use(VueRouter);
 
@@ -18,6 +19,13 @@ const routes: Array<RouteConfig> = [
     name: "Article",
     components: {
       main: Article
+    }
+  },
+  {
+    path: "/user/:loginName",
+    name: "UserInfo",
+    components: {
+      main: UserInfo
     }
   }
 ];

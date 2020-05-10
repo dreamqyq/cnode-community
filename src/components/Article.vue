@@ -29,8 +29,16 @@ export default class Article extends Mixins(LoadingMixin) {
             <p>
               <span>• 发布于 {formatDate(this.topicDetail.create_at)}</span>
               <span>
-                • 作者
-                {this.topicDetail.author.loginname}
+                <router-link
+                  class="link"
+                  to={{
+                    name: "UserInfo",
+                    params: { loginName: this.topicDetail.author.loginname }
+                  }}
+                >
+                  • 作者
+                  {this.topicDetail.author.loginname}
+                </router-link>
               </span>
               <span>{this.topicDetail.visit_count} 次浏览</span>
               <span>
@@ -49,7 +57,7 @@ export default class Article extends Mixins(LoadingMixin) {
         <reply-box
           replyList={this.topicDetail.replies}
           v-show={!this.isLoading}
-        ></reply-box>
+        />
       </div>
     );
   }
@@ -93,6 +101,9 @@ export default class Article extends Mixins(LoadingMixin) {
         color: #838383;
         display: inline-block;
         margin: 0 5px;
+        .link {
+          color: #0c82df;
+        }
       }
     }
     > main {

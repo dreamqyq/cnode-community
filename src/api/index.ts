@@ -3,7 +3,11 @@ import {
   TopicDetailParams,
   TopicListParams
 } from "@/types/requestParamsInterface";
-import { TopicDetailEntity, TopicListEntity } from "@/types/responseEntity";
+import {
+  TopicDetailEntity,
+  TopicListEntity,
+  UserInfoEntity
+} from "@/types/responseEntity";
 
 export function getTopicLists(
   params?: TopicListParams
@@ -21,4 +25,8 @@ export function getTopicDetail(
   return request.get(`topic/${topicId}`, {
     params
   });
+}
+
+export function getUserInfo(loginName: string): Promise<UserInfoEntity> {
+  return request.get(`user/${loginName}`);
 }
