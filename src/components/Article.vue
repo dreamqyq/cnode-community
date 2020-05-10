@@ -1,6 +1,7 @@
 <script lang="tsx">
 import { Component, Mixins } from "vue-property-decorator";
 import Loading from "@/components/Loading.vue";
+import ReplyBox from "@/components/ReplyBox.vue";
 import LoadingMixin from "@/mixins/LoadingMixin";
 import { getTopicDetail } from "@/api";
 import { TopicDetailEntity } from "@/types/responseEntity";
@@ -8,7 +9,7 @@ import { emptyTopicDetailEntity } from "@/types/factoryMethods";
 import { formatDate, formatTabName } from "@/utils/utils";
 
 @Component({
-  components: { Loading }
+  components: { Loading, ReplyBox }
 })
 export default class Article extends Mixins(LoadingMixin) {
   $refs!: {
@@ -32,6 +33,9 @@ export default class Article extends Mixins(LoadingMixin) {
                 {this.topicDetail.author.loginname}
               </span>
               <span>{this.topicDetail.visit_count} 次浏览</span>
+              <span>
+                • 最后一次编辑 {formatDate(this.topicDetail.last_reply_at)}
+              </span>
               <span>• 来自于 {formatTabName(this.topicDetail.tab, true)}</span>
             </p>
           </header>
@@ -42,6 +46,10 @@ export default class Article extends Mixins(LoadingMixin) {
             loading💤💤
           </main>
         </article>
+        <reply-box
+          replyList={this.topicDetail.replies}
+          v-show={!this.isLoading}
+        ></reply-box>
       </div>
     );
   }
