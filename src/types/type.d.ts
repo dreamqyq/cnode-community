@@ -18,6 +18,7 @@ export declare enum TabEnum {
  */
 export declare interface TopicListItem {
   id: string;
+  loginName: string;
   avatarUrl: string;
   replyCount: number;
   visitCount: number;

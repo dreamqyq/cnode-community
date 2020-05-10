@@ -3,6 +3,7 @@ import VueRouter, { RouteConfig } from "vue-router";
 import Article from "@/components/Article.vue";
 import PostList from "@/components/PostList.vue";
 import UserInfo from "@/components/UserInfo.vue";
+import SlideBar from "@/components/SlideBar.vue";
 
 Vue.use(VueRouter);
 
@@ -15,10 +16,11 @@ const routes: Array<RouteConfig> = [
     }
   },
   {
-    path: "/topic/:id",
+    path: "/topic/:id&loginName=:loginName",
     name: "Article",
     components: {
-      main: Article
+      main: Article,
+      slideBar: SlideBar
     }
   },
   {

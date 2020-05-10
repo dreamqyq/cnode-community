@@ -5,11 +5,12 @@ import { emptyUserInfo } from "@/types/factoryMethods";
 import { getUserInfo } from "@/api";
 import { UserInfoEntity } from "@/types/responseEntity";
 import { formatDate } from "@/utils/utils";
+import VForMixin from "@/mixins/VForMixin";
 
 @Component({
   components: { Loading }
 })
-export default class UserInfo extends Mixins(Loading) {
+export default class UserInfo extends Mixins(Loading, VForMixin) {
   $refs!: { loading: Loading };
   protected render() {
     return (
@@ -31,34 +32,12 @@ export default class UserInfo extends Mixins(Loading) {
           <div class="replies">
             <p>回复的主题</p>
             <ul>
-              {this.userInfo.recent_replies.map(item => {
-                return (
-                  <li>
-                    <router-link
-                      to={{ name: "Article", params: { id: item.id } }}
-                    >
-                      {item.title}
-                    </router-link>
-                  </li>
-                );
-              })}
+              {this.mapListAndReturnElement(this.userInfo.recent_replies)}
             </ul>
           </div>
           <div class="topics">
             <p>创建的主题</p>
-            <ul>
-              {this.userInfo.recent_topics.map(item => {
-                return (
-                  <li>
-                    <router-link
-                      to={{ name: "Article", params: { id: item.id } }}
-                    >
-                      {item.title}
-                    </router-link>
-                  </li>
-                );
-              })}
-            </ul>
+            <ul>{this.mapListAndReturnElement(this.userInfo.recent_topics)}</ul>
           </div>
         </div>
       </div>

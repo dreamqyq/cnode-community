@@ -11,7 +11,14 @@ export default class PostListItem extends Vue {
   protected render() {
     return (
       <div class="topicItem">
-        <img src={this.topicDetail.avatarUrl} alt="avatar" />
+        <router-link
+          to={{
+            name: "UserInfo",
+            params: { loginName: this.topicDetail.loginName }
+          }}
+        >
+          <img src={this.topicDetail.avatarUrl} alt="avatar" />
+        </router-link>
         <div class="center">
           <span class="count">
             <span>{this.topicDetail.replyCount}</span> /
@@ -22,7 +29,13 @@ export default class PostListItem extends Vue {
           </span>
           <router-link
             class="topicItemLink"
-            to={{ name: "Article", params: { id: this.topicDetail.id } }}
+            to={{
+              name: "Article",
+              params: {
+                id: this.topicDetail.id,
+                loginName: this.topicDetail.loginName
+              }
+            }}
           >
             <span class="title">{this.topicDetail.title}</span>
           </router-link>
