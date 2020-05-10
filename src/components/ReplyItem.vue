@@ -11,7 +11,10 @@ export default class ReplyItem extends Vue {
   public readonly index!: number;
   protected render() {
     return (
-      <div class="reply-item" id={this.reply.id}>
+      <div
+        class={["reply-item", this.reply.ups.length > 0 ? "good-reply" : ""]}
+        id={this.reply.id}
+      >
         <router-link to={this.reply.id} class="avatar-link">
           <img
             class="avatar"
@@ -46,6 +49,9 @@ export default class ReplyItem extends Vue {
   font-size: 12px;
   border-bottom: 1px solid #f0f0f0;
   position: relative;
+  &.good-reply {
+    background: #f4fcf0;
+  }
   .avatar-link {
     color: #444;
     font-weight: bold;

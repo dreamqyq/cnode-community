@@ -47,6 +47,9 @@ a {
   max-width: 1400px;
   margin: 0 auto;
   padding: 45px;
+  p {
+    white-space: pre-wrap;
+  }
 }
 
 @media (max-width: 767px) {
