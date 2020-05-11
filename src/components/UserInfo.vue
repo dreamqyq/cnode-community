@@ -63,7 +63,7 @@ export default class UserInfo extends Mixins(Loading, VForMixin) {
 <style lang="scss" scoped>
 @import "~@/style";
 .user-info-wrap {
-  @include widthLimit;
+  @include widthLimit(1);
   margin: 5px auto;
   flex: 1;
   .user-info {

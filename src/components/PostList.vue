@@ -103,7 +103,7 @@ export default class PostList extends Mixins(LoadingMixin) {
 @import "~@/style";
 
 .post-list-wrap {
-  @include widthLimit;
+  @include widthLimit(1);
   flex-direction: column;
   margin: 15px auto;
   flex: 1;

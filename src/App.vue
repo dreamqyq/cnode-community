@@ -12,8 +12,10 @@ export default class App extends Vue {
       <div id="app">
         <Header />
         <main>
-          <router-view name="main" />
-          <router-view name="slideBar" />
+          <div class="main-wrap">
+            <router-view name="main" />
+            <router-view name="slideBar" />
+          </div>
         </main>
         <Footer />
       </div>
@@ -23,6 +25,7 @@ export default class App extends Vue {
 </script>
 
 <style lang="scss">
+@import "~@/style";
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -34,7 +37,15 @@ export default class App extends Vue {
   height: 100vh;
   > main {
     display: flex;
+    justify-content: center;
     flex: 1;
+    > .main-wrap {
+      @include widthLimit(1);
+      display: flex;
+      flex: 1;
+      justify-content: space-between;
+      padding-top: 10px;
+    }
     overflow: auto;
   }
 }

@@ -1,5 +1,5 @@
 <script lang="tsx">
-import { Component, Mixins } from "vue-property-decorator";
+import { Component, Mixins, Watch } from "vue-property-decorator";
 import Loading from "@/components/Loading.vue";
 import ReplyBox from "@/components/ReplyBox.vue";
 import LoadingMixin from "@/mixins/LoadingMixin";
@@ -15,6 +15,10 @@ export default class Article extends Mixins(LoadingMixin) {
   $refs!: {
     loading: Loading;
   };
+  @Watch("$route")
+  handle() {
+    this.initData();
+  }
 
   protected render() {
     return (
@@ -66,11 +70,11 @@ export default class Article extends Mixins(LoadingMixin) {
   private topicDetail: TopicDetailEntity = emptyTopicDetailEntity();
 
   public mounted() {
-    this.topicId = this.$route.params.id;
     this.initData();
   }
 
   public async initData() {
+    this.topicId = this.$route.params.id;
     this.$refs.loading.showLoading();
     this.topicDetail = await getTopicDetail(this.topicId);
     this.$refs.loading.closeLoading();
@@ -81,9 +85,8 @@ export default class Article extends Mixins(LoadingMixin) {
 <style lang="scss" scoped>
 @import "~@/style";
 .article-wrap {
-  @include widthLimit;
+  @include widthLimit(0.75);
   flex: 1;
-  margin: 0 auto;
 
   article {
     background: #fff;

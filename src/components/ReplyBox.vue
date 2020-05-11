@@ -25,7 +25,7 @@ export default class ReplyBox extends Vue {
 
 <style lang="scss" scoped>
 .reply-box {
-  margin-top: 15px;
+  margin: 15px 0;
   background: #fff;
   border-radius: 10px 10px 0 0;
 

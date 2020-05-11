@@ -3,12 +3,12 @@
   justify-content: center;
   align-items: center;
 }
-@mixin widthLimit{
-  max-width: 1400px;
-  min-width: 960px;
+@mixin widthLimit($times){
+  max-width: 1400px * $times;
+  min-width: 960px * $times;
 }
 @mixin contentWidth{
-  @include widthLimit;
+  @include widthLimit(1);
   display: flex;
   flex: 1;
 }
