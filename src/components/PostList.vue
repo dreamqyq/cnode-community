@@ -5,11 +5,13 @@ import { NavItem, TopicListItem } from "@/types/type";
 import PostListItem from "@/components/PostListItem.vue";
 import Loading from "@/components/Loading.vue";
 import LoadingMixin from "@/mixins/LoadingMixin";
+import Pagination from "@/components/Pagination.vue";
 
 @Component({
   components: {
     Loading,
-    PostListItem
+    PostListItem,
+    Pagination
   }
 })
 export default class PostList extends Mixins(LoadingMixin) {
@@ -42,11 +44,13 @@ export default class PostList extends Mixins(LoadingMixin) {
             })}
           </ul>
         </div>
+        <pagination onPageHandler={this.pageHandler} />
       </div>
     );
   }
 
   private topicLists: Array<TopicListItem> = new Array<TopicListItem>();
+  private currentPage = 1;
   private tabLists: Array<NavItem> = [
     {
       txt: "全部",
@@ -71,15 +75,16 @@ export default class PostList extends Mixins(LoadingMixin) {
   ];
 
   public mounted() {
-    this.initData();
+    this.initData(1);
   }
 
-  public async initData() {
+  public async initData(page: number) {
     this.$refs.loading.showLoading();
     await getTopicLists({
       limit: 40,
-      page: 1
+      page
     }).then(response => {
+      this.topicLists = [];
       response.map(item => {
         this.topicLists.push({
           id: item.id,
@@ -96,6 +101,13 @@ export default class PostList extends Mixins(LoadingMixin) {
       });
       this.$refs.loading.closeLoading();
     });
+  }
+
+  public pageHandler(page: number) {
+    if (page !== this.currentPage) {
+      this.currentPage = page;
+      this.initData(page);
+    }
   }
 }
 </script>
