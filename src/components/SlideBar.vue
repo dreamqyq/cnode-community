@@ -41,14 +41,22 @@ export default class SlideBar extends Mixins(VForMixin) {
             </div>
           </div>
         </div>
-        <div class="recent_topics">
-          <div class="top-bar">作者最近主题</div>
-          <ul>{this.mapListAndReturnElement(this.topicListLimit5)}</ul>
-        </div>
-        <div class="recent_replies">
-          <div class="top-bar">作者最近回复</div>
-          <ul>{this.mapListAndReturnElement(this.replyListLimit5)}</ul>
-        </div>
+        {this.userInfo.recent_topics.length > 0 ? (
+          <div class="recent_topics">
+            <div class="top-bar">作者最近主题</div>
+            <ul>{this.mapListAndReturnElement(this.topicListLimit5)}</ul>
+          </div>
+        ) : (
+          ""
+        )}
+        {this.userInfo.recent_replies.length > 0 ? (
+          <div class="recent_replies">
+            <div class="top-bar">作者最近回复</div>
+            <ul>{this.mapListAndReturnElement(this.replyListLimit5)}</ul>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     );
   }

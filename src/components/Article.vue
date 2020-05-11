@@ -16,7 +16,7 @@ export default class Article extends Mixins(LoadingMixin) {
     loading: Loading;
   };
   @Watch("$route")
-  handle() {
+  private onRouteChange() {
     this.initData();
   }
 
@@ -90,6 +90,7 @@ export default class Article extends Mixins(LoadingMixin) {
 
   article {
     background: #fff;
+    margin-bottom: 10px;
     header {
       padding: 15px;
       border-bottom: 1px solid #ccc;

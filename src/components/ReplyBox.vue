@@ -9,16 +9,18 @@ export default class ReplyBox extends Vue {
   @Prop(Array)
   public readonly replyList!: Reply[];
   protected render() {
-    return (
-      <div class="reply-box">
-        <header>{this.replyList.length} 回复</header>
-        <ul class="reply-list">
-          {this.replyList.map((item, index) => {
-            return <reply-item reply={item} index={index} />;
-          })}
-        </ul>
-      </div>
-    );
+    if (this.replyList.length > 0) {
+      return (
+        <div class="reply-box">
+          <header>{this.replyList.length} 回复</header>
+          <ul class="reply-list">
+            {this.replyList.map((item, index) => {
+              return <reply-item reply={item} index={index} />;
+            })}
+          </ul>
+        </div>
+      );
+    }
   }
 }
 </script>
